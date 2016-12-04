@@ -4,7 +4,6 @@ from html.parser import HTMLParser
 class GetPostDataParser(HTMLParser):
     def __init__(self):
         super(GetPostDataParser, self).__init__()
-
         self.post_data = {}
 
     def error(self, message):
@@ -14,13 +13,11 @@ class GetPostDataParser(HTMLParser):
         if tag == 'input':
             tag_name = None
             tag_value = None
-
             for name, value in attrs:
                 if name == 'name':
                     tag_name = value
                 elif name == 'value':
                     tag_value = value
-
             if tag_name is not None:
                 self.post_data[tag_name] = tag_value
 
@@ -28,7 +25,6 @@ class GetPostDataParser(HTMLParser):
 class GetTotalPageParser(HTMLParser):
     def __init__(self):
         super(GetTotalPageParser, self).__init__()
-
         self.total_page = None
         self.in_total_page = False
 
@@ -52,7 +48,6 @@ class GetTotalPageParser(HTMLParser):
 class GetImageDownloadUrlParser(HTMLParser):
     def __init__(self):
         super(GetImageDownloadUrlParser, self).__init__()
-
         self.images_download_url = []
 
     def error(self, message):
@@ -67,7 +62,6 @@ class GetImageDownloadUrlParser(HTMLParser):
                     is_image_tag_a = True
                 elif name == 'href':
                     url = value
-
             if is_image_tag_a and url is not None:
                 self.images_download_url.append(url)
 
@@ -75,7 +69,6 @@ class GetImageDownloadUrlParser(HTMLParser):
 class GetImageUrlParser(HTMLParser):
     def __init__(self):
         super(GetImageUrlParser, self).__init__()
-
         self.in_image = False
         self.image_url = ''
         self.image_url_unsure = ''

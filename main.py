@@ -104,5 +104,6 @@ def main():
     else:
         get_images_download_url(total_page, start_page)
 
+
 if __name__ == '__main__':
     main()
