@@ -1,6 +1,7 @@
 # Add by me
 config.py
 .idea/
+download_images/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
