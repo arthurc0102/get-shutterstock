@@ -62,7 +62,7 @@ class GetImageDownloadUrlParser(HTMLParser):
                     is_image_tag_a = True
                 elif name == 'href':
                     url = value
-            if is_image_tag_a and url is not None:
+            if is_image_tag_a and url is not None and url != '' :
                 self.images_download_url.append(url)
 
 

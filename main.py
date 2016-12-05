@@ -1,4 +1,4 @@
-import os
+\\import os
 import config
 import requests
 from time import sleep
