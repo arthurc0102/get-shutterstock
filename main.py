@@ -77,8 +77,6 @@ def download_images(page, download_url_list):
                                     data=get_image_infor.post_data)
         get_image_url_parser = GetImageUrlParser()
         get_image_url_parser.feed(download_page.text)
-        if get_image_url_parser.image_url == '':
-            continue
         image = client.get(url=get_image_url_parser.image_url,
                            stream=True)
         image_filename = get_image_url_parser.image_url.split('/')[-1]
