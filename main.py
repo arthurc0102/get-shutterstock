@@ -71,7 +71,7 @@ def download_images(page, download_url_list):
         download_confirm_page = client.get('{0}{1}'.format(home_url,
                                                            image_url))
         image_id = download_confirm_page.url.split('?')[0].split('/')[-1]
-        print('Downloading image\'s id is {0}'.format(image_id))
+        print('\nDownloading image\'s id is {0}'.format(image_id))
         get_image_infor = GetPostDataParser()
         get_image_infor.feed(download_confirm_page.text)
         download_page = client.post(url=download_image_url.format(image_id),
