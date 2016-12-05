@@ -90,9 +90,9 @@ def download_images(page, download_url_list):
                 image_file.write(chunk)
         print('\n\nSleeping ......')
         if download_count % 10 == 0:
-            sleep(10)
+            sleep(60)
         else:
-            sleep(50)
+            sleep(10)
         print('Wake up')
 
 
