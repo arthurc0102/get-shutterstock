@@ -65,7 +65,9 @@ def get_images_download_url(total_page, start_page=1):
 
 
 def download_images(page, download_url_list):
+    download_count = 0
     for image_url in download_url_list:
+        download_count += 1
         download_confirm_page = client.get('{0}{1}'.format(home_url,
                                                            image_url))
         image_id = download_confirm_page.url.split('?')[0].split('/')[-1]
@@ -87,7 +89,10 @@ def download_images(page, download_url_list):
                       end='\r')
                 image_file.write(chunk)
         print('\n\nSleeping ......')
-        sleep(10)
+        if download_count % 10 == 0:
+            sleep(10)
+        else:
+            sleep(50)
         print('Wake up')
 
 
