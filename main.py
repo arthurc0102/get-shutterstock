@@ -1,6 +1,7 @@
 import os
 import config
 import requests
+from time import sleep
 from parsers import GetPostDataParser, GetTotalPageParser, GetImageUrlParser, \
     GetImageDownloadUrlParser
 
@@ -85,6 +86,9 @@ def download_images(page, download_url_list):
                 print('size(kb):', os.path.getsize(image_fullpath)/1024,
                       end='\r')
                 image_file.write(chunk)
+        print('\nSleeping ......')
+        sleep(10)
+        print('\nWake up')
 
 
 def main():
