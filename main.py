@@ -1,4 +1,4 @@
-\\import os
+import os
 import config
 import requests
 from time import sleep
@@ -71,6 +71,7 @@ def download_images(page, download_url_list):
         download_confirm_page = client.get('{0}{1}'.format(home_url,
                                                            image_url))
         image_id = download_confirm_page.url.split('?')[0].split('/')[-1]
+        print('Downloading image\'s id is {0}'.format(image_id))
         get_image_infor = GetPostDataParser()
         get_image_infor.feed(download_confirm_page.text)
         download_page = client.post(url=download_image_url.format(image_id),
@@ -82,7 +83,7 @@ def download_images(page, download_url_list):
         image_filename = get_image_url_parser.image_url.split('/')[-1]
         image_fullpath = './download_images/page_{0}/{1}' \
                          .format(page, image_filename)
-        print('\nDownloading image <{0}>...... '.format(image_filename))
+        print('Downloading image <{0}>...... '.format(image_filename))
         with open(image_fullpath, 'wb')as image_file:
             for chunk in image:
                 print('size(kb):', os.path.getsize(image_fullpath)/1024,
