@@ -70,9 +70,14 @@ def download_images(page, download_url_list):
         download_count += 1
         download_confirm_page = client.get('{0}{1}'.format(home_url,
                                                            image_url))
+        if download_confirm_page.url == \
+           'https://www.shutterstock.com/subscribe':
+            # 如果超過下載期限就跳過
+            # 超過下載期限會跳轉 https://www.shutterstock.com/subscribe 頁面
+            continue
         print('\nThis image\'s url is {0}'.format(download_confirm_page.url))
         image_id = download_confirm_page.url.split('?')[0].split('/')[-1]
-        print('\nDownloading image\'s id is {0}'.format(image_id))
+        print('Downloading image\'s id is {0}'.format(image_id))
         get_image_infor = GetPostDataParser()
         get_image_infor.feed(download_confirm_page.text)
         download_page = client.post(url=download_image_url.format(image_id),
