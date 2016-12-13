@@ -74,6 +74,7 @@ def download_images(page, download_url_list):
            'https://www.shutterstock.com/subscribe':
             # 如果超過下載期限就跳過
             # 超過下載期限會跳轉 https://www.shutterstock.com/subscribe 頁面
+            print('\nskip image {0}'.format(image_url))
             continue
         print('\nThis image\'s url is {0}'.format(download_confirm_page.url))
         image_id = download_confirm_page.url.split('?')[0].split('/')[-1]
