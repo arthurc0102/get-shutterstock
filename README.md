@@ -10,4 +10,4 @@
 
 * run the main.py file to start download
 
-* the image that you download will be in the download_images folder
+* the image that you download will be in the `download_images` folder
